@@ -8,6 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "prepublish": "tsc",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bryant-Anjos/react-native-highlighted-text.git"
+  },
   "keywords": [
     "react",
     "react native",
@@ -24,6 +28,10 @@
   ],
   "author": "Bryant Moreira dos Anjos",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bryant-Anjos/react-native-highlighted-text/issues"
+  },
+  "homepage": "https://github.com/Bryant-Anjos/react-native-highlighted-text#readme",
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
