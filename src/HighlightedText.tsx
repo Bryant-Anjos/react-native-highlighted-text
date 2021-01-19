@@ -21,7 +21,7 @@ const TEXT_WITH_BRACKETS = new RegExp(/(\[\[.+?\]\])/)
 const TEXT_AMONG_BRACKETS = new RegExp(/\[\[(.*)\]\]/)
 const KEY_VALUE = new RegExp(/^\w[,\w]+=\w+/)
 
-export const HighlightedText = (props: Props) => {
+const HighlightedText = (props: Props) => {
   const { children, highlightedTextStyles = [] } = props
 
   const textFormated = useMemo(() => {
@@ -85,3 +85,5 @@ export const HighlightedText = (props: Props) => {
 
   return <Text {...props}>{textFormated}</Text>
 }
+
+export default HighlightedText
