@@ -15,8 +15,7 @@ npm install react-native-highlighted-text
 ## Usage
 
 ### With normal styles
-
-![normal styles](https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/assets/img/normal-styles-example.png?raw=true =200x)
+<img src="https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/assets/img/normal-styles-example.png?raw=true" width="200">
 
 ```tsx
 import { HighlightedText } from  'react-native-highlighted-text'
@@ -41,7 +40,7 @@ import { HighlightedText } from  'react-native-highlighted-text'
 ```
 
 ### With named styles
-![named styles](https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/assets/img/named-styles-example.png?raw=true =200x)
+<img src="https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/assets/img/named-styles-example.png?raw=true" width="200">
 
 ```tsx
 import { HighlightedText } from  'react-native-highlighted-text'
