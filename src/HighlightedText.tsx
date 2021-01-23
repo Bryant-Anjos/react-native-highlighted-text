@@ -2,8 +2,8 @@ import React, { useMemo } from 'react'
 import { Text } from 'react-native'
 import type { TextStyle } from 'react-native'
 
-type Props = React.ComponentProps<typeof Text> & {
-  children: string
+type HighlightedTextProps = React.ComponentProps<typeof Text> & {
+  children: string | string[]
   highlightedTextStyles?:
     | TextStyle[]
     | {
@@ -17,16 +17,19 @@ interface CreateStyledElement {
   style?: TextStyle | TextStyle[]
 }
 
-const TEXT_WITH_BRACKETS = new RegExp(/(\[\[.+?\]\])/)
-const TEXT_AMONG_BRACKETS = new RegExp(/\[\[(.*)\]\]/)
-const KEY_VALUE = new RegExp(/^\w[,\w]+=\w+/)
+const TEXT_WITH_BRACKETS = /(\[\[.+?\]\])/
+const TEXT_AMONG_BRACKETS = /\[\[(.*)\]\]/
+const KEY_VALUE = /^\w[,\w]+=\w+/
 
-const HighlightedText = (props: Props) => {
+const HighlightedText: React.FC<HighlightedTextProps> = (
+  props: HighlightedTextProps,
+) => {
   const { children, highlightedTextStyles = [] } = props
 
   const textFormated = useMemo(() => {
     let currentStyleIndex = 0
-    const textArray = children.split(TEXT_WITH_BRACKETS)
+    const allText = Array.isArray(children) ? children.join() : children
+    const textArray = allText.split(TEXT_WITH_BRACKETS)
     const createStyledElement = ({
       text,
       style,
