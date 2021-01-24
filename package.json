@@ -1,6 +1,6 @@
 {
   "name": "react-native-highlighted-text",
-  "version": "0.6.1",
+  "version": "0.8.0",
   "description": "A React Native component to individually style texts inside a text",
   "main": "src/index",
   "types": "dist/index.d.ts",

@@ -1,18 +1,20 @@
 import React, { useMemo } from 'react'
 import { Text } from 'react-native'
 import { formatText } from './formatText'
+import { generateRegex } from './generateRegex'
+import { Character } from './enums'
 import type { HighlightedTextProps } from './types'
-
-const regex = {
-  TEXT_WITH_BRACKETS: /(\[\[.+?\]\])/,
-  TEXT_AMONG_BRACKETS: /\[\[(.*)\]\]/,
-  KEY_VALUE: /^\w[,\w]+=\w+/,
-}
 
 const HighlightedText: React.FC<HighlightedTextProps> = (
   props: HighlightedTextProps,
 ) => {
-  const textFormated = useMemo(() => formatText(props, regex), [props])
+  const { characters = Character.SQUARE_BRACKETS } = props
+  const regex = generateRegex(characters)
+
+  const textFormated = useMemo(
+    () => formatText({ ...props, characters }, regex),
+    [props, characters, regex],
+  )
 
   return <Text {...props}>{textFormated}</Text>
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Text, TextStyle } from 'react-native'
+import type { Regex } from './interfaces'
 
 export type HighlightedTextProps = React.ComponentProps<typeof Text> & {
   children: string | string[]
@@ -8,11 +9,18 @@ export type HighlightedTextProps = React.ComponentProps<typeof Text> & {
     | {
         [key: string]: TextStyle
       }
+  characters?: Characters
 }
 
 export type FormatText = (
   props: HighlightedTextProps,
-  regex: {
-    [name: string]: RegExp
-  },
+  regex: Regex,
 ) => JSX.Element
+
+export type Characters =
+  | 'square-brackets'
+  | 'curly-brackets'
+  | 'tags'
+  | 'parenthesis'
+
+export type GenerateRegex = (characters: Characters) => Regex
