@@ -12,6 +12,13 @@ export type HighlightedTextProps = React.ComponentProps<typeof Text> & {
   characters?: Characters
 }
 
+export type CreateStyledElement = (args: {
+  text: string
+  jsxElement: JSX.Element
+  style?: TextStyle | TextStyle[]
+  props: HighlightedTextProps
+}) => JSX.Element
+
 export type FormatText = (
   props: HighlightedTextProps,
   regex: Regex,

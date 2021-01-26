@@ -1,14 +1,13 @@
 import React from 'react'
 import { Text } from 'react-native'
-import type { FormatText } from './types'
-import type { CreateStyledElement } from './interfaces'
+import type { CreateStyledElement, FormatText } from './types'
 
-const createStyledElement = ({
+const createStyledElement: CreateStyledElement = ({
   text,
   style,
   jsxElement,
   props,
-}: CreateStyledElement) => (
+}) => (
   <>
     {jsxElement}
     <Text {...props} style={[props.style, style]}>
