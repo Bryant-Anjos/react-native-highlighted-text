@@ -11,6 +11,6 @@ export const generateRegex: GenerateRegex = regex => {
     TEXT_AMONG_BRACKETS: new RegExp(
       `\\${open}\\${open}(.*)\\${close}\\${close}`,
     ),
-    KEY_VALUE: /^[A-Za-z]([,\w]+)?=\w+/,
+    KEY_VALUE: /^[A-Za-z]([,\w]+)?=.+/,
   }
 }
