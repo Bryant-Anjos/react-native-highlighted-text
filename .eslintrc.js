@@ -32,6 +32,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-use-before-define': 'off',
     'comma-dangle': 'off',
+    'space-before-function-paren': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

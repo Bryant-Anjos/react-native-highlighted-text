@@ -28,10 +28,6 @@ export const formatText: FormatText = (props, regex) => {
     if (TEXT_WITH_BRACKETS.test(text)) {
       const pureText = text.replace(TEXT_AMONG_BRACKETS, '$1')
 
-      if (!highlightedTextStyles) {
-        return createStyledElement({ text: pureText, jsxElement, props })
-      }
-
       if (Array.isArray(highlightedTextStyles)) {
         const style = highlightedTextStyles[currentStyleIndex]
         currentStyleIndex += 1
