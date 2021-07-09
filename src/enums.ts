@@ -1,8 +1,6 @@
-import type { CharacterEnum } from './interfaces'
-
-export const Character: CharacterEnum = Object.freeze({
+export const Character = {
   SQUARE_BRACKETS: 'square-brackets',
   CURLY_BRACKETS: 'curly-brackets',
   TAGS: 'tags',
   PARENTHESIS: 'parenthesis',
-})
+} as const

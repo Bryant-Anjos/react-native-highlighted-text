@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     es2021: true,
+    jest: true,
   },
   globals: {
     __DEV__: 'readonly',

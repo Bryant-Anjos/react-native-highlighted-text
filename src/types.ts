@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Text, TextStyle } from 'react-native'
-import type { Regex } from './interfaces'
+import { Character } from './enums'
 
 export type HighlightedTextStyles =
   | TextStyle[]
@@ -21,15 +21,24 @@ export type CreateStyledElement = (args: {
   props: HighlightedTextProps
 }) => JSX.Element
 
+export type Characters = typeof Character[keyof typeof Character]
+
+export type GenerateRegex = (
+  characters: Characters,
+) => Record<
+  | 'TEXT_WITH_BRACKETS'
+  | 'TEXT_AMONG_BRACKETS'
+  | 'KEY_VALUE_TEXT'
+  | 'KEY_VALUE_NUMBER',
+  RegExp
+>
+
 export type FormatText = (
   props: HighlightedTextProps,
-  regex: Regex,
+  regex: ReturnType<GenerateRegex>,
 ) => JSX.Element
 
-export type Characters =
-  | 'square-brackets'
-  | 'curly-brackets'
-  | 'tags'
-  | 'parenthesis'
-
-export type GenerateRegex = (characters: Characters) => Regex
+export type RegexCharactersEnum = Record<
+  Characters,
+  [open: string, close: string]
+>

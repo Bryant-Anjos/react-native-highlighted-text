@@ -1,4 +1,4 @@
-import { RegexCharactersEnum } from './interfaces'
+import { RegexCharactersEnum } from './types'
 import { Character } from './enums'
 
 export const regexCharacters: RegexCharactersEnum = {

@@ -5,7 +5,7 @@
   "main": "src/index",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "prepare": "tsc"
   },
   "repository": {
@@ -37,10 +37,15 @@
     "react-native": "*"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/jest": "^26.0.24",
     "@types/react": "^17.0.0",
     "@types/react-native": "^0.63.45",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
+    "babel-jest": "^27.0.6",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-config-standard": "^16.0.2",
@@ -51,8 +56,10 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^27.0.6",
     "metro-react-native-babel-preset": "^0.64.0",
     "prettier": "^2.2.1",
+    "ts-node": "^10.0.0",
     "typescript": "^4.1.3"
   }
 }
