@@ -5,8 +5,10 @@
   "main": "src/index",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "prepare": "tsc"
+    "format": "prettier --write ./src/**/*.{ts,tsx}",
+    "lint": "eslint --fix ./src/**/*.{ts,tsx}",
+    "prepare": "tsc",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
