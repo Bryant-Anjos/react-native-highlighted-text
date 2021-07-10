@@ -10,3 +10,6 @@ dist
 # Dependency directory
 node_modules
 coverage
+
+# yarn
+yarn.lock
