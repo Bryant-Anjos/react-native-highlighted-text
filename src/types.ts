@@ -17,7 +17,7 @@ export type HighlightedTextProps = React.ComponentProps<typeof Text> & {
 export type CreateStyledElement = (args: {
   text: string
   jsxElement: JSX.Element
-  style?: TextStyle | TextStyle[]
+  styles?: TextStyle | TextStyle[]
   props: HighlightedTextProps
 }) => JSX.Element
 

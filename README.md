@@ -109,7 +109,7 @@ import { HighlightedText } from  'react-native-highlighted-text'
 | Prop | Description | Default | Required |
 |---|---|---|---|
 |**`highlightedTextStyles`**|Styles of the highlighted texts, [TextStyle](https://reactnative.dev/docs/text-style-props#props)'s array or [TextStyle](https://reactnative.dev/docs/text-style-props#props)'s object.|*None*|Yes|
-|**`characters`**|Character used to highlight the words. `square-brackets` ([]), `curly-brackets` ({}), `tags` (<>) or `parenthesis` (())|`square-brackets`|No|
+|**`characters`**|Character used to highlight the words. `square-brackets` (`[]`), `curly-brackets` (`{}`), `tags` (`<>`) or `parenthesis` (`()`)|`square-brackets`|No|
 |**`...Text Props`**|[React Native Text Props](https://reactnative.dev/docs/text#props)|*None*|No|
 
 ## Examples
