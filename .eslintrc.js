@@ -24,6 +24,8 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
+    '@typescript-eslint/no-useless-constructor': 'error',
+    'no-useless-constructor': 'off',
     'prettier/prettier': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',

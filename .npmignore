@@ -11,3 +11,5 @@ tmp
 # Examples
 examples
 assets
+
+**/__tests__/**
