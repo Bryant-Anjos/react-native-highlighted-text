@@ -167,6 +167,52 @@ import { HighlightedText } from  'react-native-highlighted-text'
 </HighlightedText>
 ```
 
+## Change the highlight character
+
+By default, the character to highlight texts is the square brackets `[]`, having to put them around the text like as `[[highlighted text here]]`.  
+
+It was chosen because the curly brackets `{}` are to execute javascript inside react elements, then the square brackets avoids this behavior.  
+
+If you want to change the default character there are a prop with some options availables to do this. They are the `characters` prop and its values are `square-brackets` (`[]`), `curly-brackets` (`{}`), `tags` (`<>`) and `parenthesis` (`()`).  
+
+### Examples
+
+```tsx
+import { HighlightedText } from  'react-native-highlighted-text'
+
+<HighlightedText
+  style={styles.text}
+  highlightedTextStyles={[ ... ]}
+  characters="parenthesis"
+>
+  Open up ((App.tsx)) to start working on your ((app!))
+</HighlightedText>
+```
+
+```tsx
+import { HighlightedText } from  'react-native-highlighted-text'
+
+<HighlightedText
+  style={styles.text}
+  highlightedTextStyles={[ ... ]}
+  characters="square-brackets"
+>
+  {`Open up {{App.tsx}} to start working on your {{app!}}`}
+</HighlightedText>
+```
+
+```tsx
+import { HighlightedText } from  'react-native-highlighted-text'
+
+<HighlightedText
+  style={styles.text}
+  highlightedTextStyles={[ ... ]}
+  characters="tags"
+>
+  {`Open up <<App.tsx>> to start working on your <<app!>>`}
+</HighlightedText>
+```
+
 ## Properties
 
 | Prop | Description | Default | Required |
