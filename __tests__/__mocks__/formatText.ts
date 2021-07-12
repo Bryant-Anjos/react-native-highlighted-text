@@ -10,6 +10,7 @@ type FormatText = (
 ) => {
   text: string
   styles: (TextStyle | TextStyle[])[]
+  onPress: (() => void)[]
 }
 
 export const formatText: FormatText = (text, regex, formater) =>
@@ -20,6 +21,7 @@ export const formatText: FormatText = (text, regex, formater) =>
         return {
           text: prev.text + result.text,
           styles: [...prev.styles, result.styles],
+          onPress: [...prev.onPress, () => result.onPress?.(result.text)],
         }
       }
       return {
@@ -30,5 +32,6 @@ export const formatText: FormatText = (text, regex, formater) =>
     {
       text: '',
       styles: [],
+      onPress: [],
     },
   )

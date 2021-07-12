@@ -69,7 +69,7 @@ import { HighlightedText } from  'react-native-highlighted-text'
   }}
 >
   Lorem, ipsum [[bold=dolor]] sit amet consectetur adipisicing
-  [[red=elit]]. Quaerat ducimus dicta cum [lg=expedita]] consectetur quod
+  [[red=elit]]. Quaerat ducimus dicta cum [[lg=expedita]] consectetur quod
   tempore voluptatum autem aspernatur. [[bold,red,lg=Aliquid]].
 </HighlightedText>
 ```
@@ -104,11 +104,75 @@ import { HighlightedText } from  'react-native-highlighted-text'
 </HighlightedText>
 ```
 
+## Functions
+
+<img src="https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/assets/img/on-press-highlighted.gif?raw=true" width="200">
+
+It's possible to add functions to highlighted texts in a prop called `onPressHighlighted`. They receive the clicked text as argument, it is useful to do things such as a link to redirect to a external site.  
+
+But is only possible to add only one function for each single highlighted text, if a text get various styles like in named styles, it will be get only the first function that match with the key used.  
+
+Functions in this props will follow the same `highlightedTextStyles`' structure. If the `highlightedTextStyles` is an array, the `onPressHighlighted` will be an array too, if the `highlightedTextStyles` is an object the `onPressHighlighted` will be an object, and so on.  
+
+`onPressHighlighted` examples:  
+
+### With normal styles
+
+```tsx
+import { HighlightedText } from  'react-native-highlighted-text'
+
+<HighlightedText
+  style={styles.text}
+  highlightedTextStyles={[ ... ]}
+  onPressHighlighted={[
+    (text) => Alert.alert(text),
+    (text) => console.log('Hello ' + text),
+  ]}
+>
+  Open up [[App.tsx]] to start working on your [[app!]]
+</HighlightedText>
+```
+
+### With named styles
+
+```tsx
+import { HighlightedText } from  'react-native-highlighted-text'
+
+<HighlightedText
+  style={styles.text}
+  highlightedTextStyles={{ ... }}
+  onPressHighlighted={{
+    red: (text) => Alert.alert(text),
+    bold: (text) => console.log('Hello ' + text),
+  }}
+>
+  Open up [[red=App.tsx]] to start working on your [[bold=app!]]
+</HighlightedText>
+```
+
+### With numbered styles
+
+```tsx
+import { HighlightedText } from  'react-native-highlighted-text'
+
+<HighlightedText
+  style={styles.text}
+  highlightedTextStyles={[ ... ]}
+  onPressHighlighted={[
+    (text) => Alert.alert(text),
+    (text) => console.log('Hello ' + text),
+  ]}
+>
+  Open up [[1=App.tsx]] to start working on your [[2=app!]]
+</HighlightedText>
+```
+
 ## Properties
 
 | Prop | Description | Default | Required |
 |---|---|---|---|
 |**`highlightedTextStyles`**|Styles of the highlighted texts, [TextStyle](https://reactnative.dev/docs/text-style-props#props)'s array or [TextStyle](https://reactnative.dev/docs/text-style-props#props)'s object.|*None*|Yes|
+|**`onPressHighlighted`**|Functions to run in the highlighted text, receives the text clicked as argument, `Array<(text: string) => void>` or `Record<string, (text: string) => void>`.|*None*|No|
 |**`characters`**|Character used to highlight the words. `square-brackets` (`[]`), `curly-brackets` (`{}`), `tags` (`<>`) or `parenthesis` (`()`)|`square-brackets`|No|
 |**`...Text Props`**|[React Native Text Props](https://reactnative.dev/docs/text#props)|*None*|No|
 
@@ -118,3 +182,6 @@ You can see examples on the following links:
 - [Normal Styles](https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/examples/normal-styles.tsx)
 - [Named Styles](https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/examples/named-styles.tsx)
 - [Numbered Styles](https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/examples/numbered-styles.tsx)
+- [Normal Styles with Functions](https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/examples/normal-styles-with-functions.tsx)
+- [Named Styles with Functions](https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/examples/named-styles-with-functions.tsx)
+- [Numbered Styles with Functions](https://github.com/Bryant-Anjos/react-native-highlighted-text/blob/main/examples/numbered-styles-with-functions.tsx)
