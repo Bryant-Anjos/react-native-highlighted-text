@@ -6,6 +6,7 @@ npm-debug.log
 tmp
 build
 dist
+lib
 
 # Dependency directory
 node_modules

@@ -2,14 +2,25 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext",
+      "ES6",
+      "ES2016",
+      "ES2017",
+      "ES2018",
+      "ES2019",
+      "ES2020"
+    ],
+    "module": "ESNext",
+    "target": "ES5",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true,
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "lib/esm"
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "lib"]
 }

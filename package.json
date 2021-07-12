@@ -2,12 +2,16 @@
   "name": "react-native-highlighted-text",
   "version": "1.1.0",
   "description": "A React Native component to individually style texts inside a text",
-  "main": "src/index",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "format": "prettier --write ./src/**/*.{ts,tsx}",
     "lint": "eslint --fix ./src/**/*.{ts,tsx}",
-    "prepare": "tsc",
+    "prepublish": "npm run build",
     "test": "jest"
   },
   "repository": {
@@ -34,6 +38,9 @@
     "url": "https://github.com/Bryant-Anjos/react-native-highlighted-text/issues"
   },
   "homepage": "https://github.com/Bryant-Anjos/react-native-highlighted-text#readme",
+  "files": [
+    "/lib"
+  ],
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
