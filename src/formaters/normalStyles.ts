@@ -1,7 +1,13 @@
 import type { TextStyle } from 'react-native'
 
 import type { FormaterBase, FormaterCreation } from './formaterBase'
-import type { GenerateRegex, HighlightedTextStyles } from '../types'
+import type {
+  GenerateRegex,
+  HighlightedTextStyles,
+  OnPressHighlighted,
+} from '../types'
+
+type PressFunctions = ((text: string) => void)[] | undefined
 
 export class NormalStyles implements FormaterBase {
   private currentStyle = 0
@@ -9,6 +15,7 @@ export class NormalStyles implements FormaterBase {
   constructor(
     readonly styles: HighlightedTextStyles,
     readonly regex: ReturnType<GenerateRegex>,
+    readonly pressFunctions: OnPressHighlighted,
   ) {}
 
   validate(text: string): boolean {
@@ -41,11 +48,13 @@ export class NormalStyles implements FormaterBase {
   create(text: string): FormaterCreation {
     const { TEXT_AMONG_BRACKETS } = this.regex
     const pureText = text.replace(TEXT_AMONG_BRACKETS, '$1')
+    const onPress = (this.pressFunctions as PressFunctions)?.[this.currentStyle]
     const style = this.getStyle()
 
     return {
       text: pureText,
       styles: style,
+      onPress,
     }
   }
 

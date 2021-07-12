@@ -1,12 +1,19 @@
 import type { TextStyle } from 'react-native'
 
 import type { FormaterBase, FormaterCreation } from './formaterBase'
-import type { GenerateRegex, HighlightedTextStyles } from '../types'
+import type {
+  GenerateRegex,
+  HighlightedTextStyles,
+  OnPressHighlighted,
+} from '../types'
+
+type PressFunctions = Record<string, (text: string) => void> | undefined
 
 export class NamedStyles implements FormaterBase {
   constructor(
     readonly styles: HighlightedTextStyles,
     readonly regex: ReturnType<GenerateRegex>,
+    readonly pressFunctions: OnPressHighlighted,
   ) {}
 
   validate(text: string): boolean {
@@ -34,16 +41,37 @@ export class NamedStyles implements FormaterBase {
   create(text: string): FormaterCreation {
     const { TEXT_AMONG_BRACKETS } = this.regex
     const pureText = text.replace(TEXT_AMONG_BRACKETS, '$1')
-    const keysAndText = pureText.split('=')
-    const keys = keysAndText[0].split(',')
-    const styles = keys.map(
-      key => (this.styles as Record<string, TextStyle>)[key],
-    )
-    const finalText = keysAndText[1]
+    const [finalText, styles, onPress] = this.getProperties(pureText)
 
     return {
       text: finalText,
       styles,
+      onPress,
     }
+  }
+
+  private getProperties(
+    value: string,
+  ): [
+    text: string,
+    styles: TextStyle[],
+    onPress: ((text: string) => void) | undefined,
+  ] {
+    const [key, text] = value.split('=')
+    const keys = key.split(',')
+    const styles = keys.map(
+      key => (this.styles as Record<string, TextStyle>)[key],
+    )
+    const onPress = this.getOnPress(keys)
+    return [text, styles, onPress]
+  }
+
+  private getOnPress(keys: string[]): ((text: string) => void) | undefined {
+    const key =
+      keys.find(
+        value => (this.pressFunctions as PressFunctions)?.[value] !== undefined,
+      ) ?? ''
+    const onPress = (this.pressFunctions as PressFunctions)?.[key]
+    return onPress
   }
 }

@@ -2,16 +2,18 @@ import React from 'react'
 import type { Text, TextStyle } from 'react-native'
 import { Character } from './enums'
 
-export type HighlightedTextStyles =
-  | TextStyle[]
-  | {
-      [key: string]: TextStyle
-    }
+export type HighlightedTextStyles = TextStyle[] | Record<string, TextStyle>
+
+export type OnPressHighlighted =
+  | ((text: string) => void)[]
+  | Record<string, (text: string) => void>
+  | undefined
 
 export type HighlightedTextProps = React.ComponentProps<typeof Text> & {
   children: string | string[]
   highlightedTextStyles: HighlightedTextStyles
   characters?: Characters
+  onPressHighlighted?: OnPressHighlighted
 }
 
 export type CreateStyledElement = (args: {
@@ -19,6 +21,7 @@ export type CreateStyledElement = (args: {
   jsxElement: JSX.Element
   styles?: TextStyle | TextStyle[]
   props: HighlightedTextProps
+  onPress?: (text: string) => void
 }) => JSX.Element
 
 export type Characters = typeof Character[keyof typeof Character]
